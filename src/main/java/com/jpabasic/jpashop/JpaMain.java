@@ -5,6 +5,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import com.jpabasic.jpashop.domain.Member_T;
+import com.jpabasic.jpashop.domain.Team;
+
 public class JpaMain {
 
 	public static void main(String[] args) {
@@ -16,6 +19,24 @@ public class JpaMain {
 		tx.begin();
 		
 		try {
+			//저장
+			Team team = new Team();
+			team.setName("TeamA");
+			em.persist(team);
+			
+			Member_T member = new Member_T();
+			member.setUsername("member1");
+			member.setTeam(team);
+			em.persist(member);
+			
+			em.flush();
+			em.clear();
+			
+			Member_T findMember = em.find(Member_T.class, member.getId());
+			
+			Team findTeam = findMember.getTeam();
+			System.out.println("findTeam = " + findTeam.getName());
+			
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
