@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Member2 {
+public class Member2 extends BaseEntity {
 
 	@Id
 	@GeneratedValue
@@ -25,7 +25,7 @@ public class Member2 {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TEAM_ID")
 	private Team team;
-
+	
 	public Long getId() {
 		return id;
 	}

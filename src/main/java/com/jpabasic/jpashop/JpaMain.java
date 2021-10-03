@@ -1,5 +1,6 @@
 package com.jpabasic.jpashop;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -24,23 +25,15 @@ public class JpaMain {
 		
 		try {
 			
-			Movie movie = new Movie();
-			movie.setDirector("aaaa");
-			movie.setActor("bbbb");
-			movie.setName("바람과함께사라지다.");
-			movie.setPrice(10000);
+			Member2 member = new Member2();
+			member.setUsername("user1");
+			member.setCreateBy("yoo");
+			member.setCreatedDate(LocalDateTime.now());
 			
-			em.persist(movie);
+			em.persist(member);
 			
 			em.flush();
 			em.clear();
-			
-//			Movie findMovie = em.find(Movie.class, movie.getId());
-//			System.out.println("findMovie = " + findMovie);
-			
-			Item2 item = em.find(Item2.class, movie.getId());
-			System.out.println("item = " + item);
-			
 			
 			tx.commit();
 		} catch (Exception e) {
