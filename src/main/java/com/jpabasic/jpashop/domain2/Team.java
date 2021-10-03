@@ -1,4 +1,4 @@
-package com.jpabasic.jpashop.domain;
+package com.jpabasic.jpashop.domain2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +19,9 @@ public class Team {
 	private String name;
 
 	@OneToMany(mappedBy = "team")
-	private List<Member_T> members = new ArrayList<>();
+	private List<Member2> members = new ArrayList<>();
 
-	public void addMember(Member_T member) {
+	public void addMember(Member2 member) {
 		member.setTeam(this);
 		members.add(member);
 	}
@@ -42,11 +42,11 @@ public class Team {
 		this.name = name;
 	}
 
-	public List<Member_T> getMembers() {
+	public List<Member2> getMembers() {
 		return members;
 	}
 
-	public void setMembers(List<Member_T> members) {
+	public void setMembers(List<Member2> members) {
 		this.members = members;
 	}
 

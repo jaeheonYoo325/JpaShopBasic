@@ -1,4 +1,4 @@
-package com.jpabasic.jpashop.domain;
+package com.jpabasic.jpashop.domain2;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Member_T {
+public class Member2 {
 
 	@Id
 	@GeneratedValue

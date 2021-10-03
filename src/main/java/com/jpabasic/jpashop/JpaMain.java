@@ -7,8 +7,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import com.jpabasic.jpashop.domain.Member_T;
-import com.jpabasic.jpashop.domain.Team;
+import com.jpabasic.jpashop.domain2.Item2;
+import com.jpabasic.jpashop.domain2.Member2;
+import com.jpabasic.jpashop.domain2.Movie;
+import com.jpabasic.jpashop.domain2.Team;
 
 public class JpaMain {
 
@@ -21,28 +23,23 @@ public class JpaMain {
 		tx.begin();
 		
 		try {
-			//저장
-			Team team = new Team();
-			team.setName("TeamA");
-			em.persist(team);
 			
-			Member_T member = new Member_T();
-			member.setUsername("member1");
-			em.persist(member);
+			Movie movie = new Movie();
+			movie.setDirector("aaaa");
+			movie.setActor("bbbb");
+			movie.setName("바람과함께사라지다.");
+			movie.setPrice(10000);
 			
-			team.addMember(member);
+			em.persist(movie);
 			
 			em.flush();
 			em.clear();
 			
-			Team findTeam = em.find(Team.class, team.getId()); //1차 캐시
-			List<Member_T> members = findTeam.getMembers();
+//			Movie findMovie = em.find(Movie.class, movie.getId());
+//			System.out.println("findMovie = " + findMovie);
 			
-			System.out.println("=======================");
-			for(Member_T m : members) {
-				System.out.println("m = " + m.getUsername());
-			}
-			System.out.println("=======================");
+			Item2 item = em.find(Item2.class, movie.getId());
+			System.out.println("item = " + item);
 			
 			
 			tx.commit();
