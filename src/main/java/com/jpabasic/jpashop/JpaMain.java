@@ -8,9 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import com.jpabasic.jpashop.domain.Book;
 import com.jpabasic.jpashop.domain2.Item2;
 import com.jpabasic.jpashop.domain2.Member2;
-import com.jpabasic.jpashop.domain2.Movie;
+import com.jpabasic.jpashop.domain2.Movie2;
 import com.jpabasic.jpashop.domain2.Team;
 
 public class JpaMain {
@@ -25,15 +26,11 @@ public class JpaMain {
 		
 		try {
 			
-			Member2 member = new Member2();
-			member.setUsername("user1");
-			member.setCreateBy("yoo");
-			member.setCreatedDate(LocalDateTime.now());
+			Book book = new Book();
+			book.setName("JPA");
+			book.setAuthor("김영한");
 			
-			em.persist(member);
-			
-			em.flush();
-			em.clear();
+			em.persist(book);
 			
 			tx.commit();
 		} catch (Exception e) {

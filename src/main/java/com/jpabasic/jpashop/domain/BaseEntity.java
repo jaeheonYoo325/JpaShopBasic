@@ -1,11 +1,11 @@
-package com.jpabasic.jpashop.domain2;
+package com.jpabasic.jpashop.domain;
 
 import java.time.LocalDateTime;
 
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class BaseEntity {
+public class BaseEntity {
 
 	private String createBy;
 	private LocalDateTime createdDate;

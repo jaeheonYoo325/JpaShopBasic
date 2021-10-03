@@ -1,11 +1,9 @@
-package com.jpabasic.jpashop.domain2;
+package com.jpabasic.jpashop.domain;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("M")
-public class Movie extends Item2 {
+public class Movie extends Item {
 
 	private String director;
 	private String actor;
