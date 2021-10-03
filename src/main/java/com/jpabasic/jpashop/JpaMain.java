@@ -29,16 +29,30 @@ public class JpaMain {
 		
 		try {
 			
+			Team team = new Team();
+			team.setName("teamA");
+			em.persist(team);
+			
+			Team teamB = new Team();
+			teamB.setName("teamB");
+			em.persist(teamB);
+			
 			Member2 member1 = new Member2();
 			member1.setUsername("member1");
+			member1.setTeam(team);
 			em.persist(member1);
+			
+			Member2 member2 = new Member2();
+			member2.setUsername("member2");
+			member2.setTeam(teamB);
+			em.persist(member2);
 			
 			em.flush();
 			em.clear();
 			
-			Member2 refMember = em.getReference(Member2.class, member1.getId());
-			System.out.println("refMember = " + refMember.getClass());
-			Hibernate.initialize(refMember);//프록시 강제초기화
+//			Member2 m = em.find(Member2.class, member1.getId());
+			List<Member2> members = em.createQuery("select m from Member2 m join fetch m.team", Member2.class)
+					.getResultList();
 			
 			tx.commit();
 		} catch (Exception e) {
