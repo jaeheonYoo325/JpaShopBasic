@@ -8,7 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import org.hibernate.Hibernate;
+
 import com.jpabasic.jpashop.domain.Book;
+import com.jpabasic.jpashop.domain.Member;
 import com.jpabasic.jpashop.domain2.Item2;
 import com.jpabasic.jpashop.domain2.Member2;
 import com.jpabasic.jpashop.domain2.Movie2;
@@ -26,15 +29,21 @@ public class JpaMain {
 		
 		try {
 			
-			Book book = new Book();
-			book.setName("JPA");
-			book.setAuthor("김영한");
+			Member2 member1 = new Member2();
+			member1.setUsername("member1");
+			em.persist(member1);
 			
-			em.persist(book);
+			em.flush();
+			em.clear();
+			
+			Member2 refMember = em.getReference(Member2.class, member1.getId());
+			System.out.println("refMember = " + refMember.getClass());
+			Hibernate.initialize(refMember);//프록시 강제초기화
 			
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
+			e.printStackTrace();
 		} finally {
 			em.close();
 		}
