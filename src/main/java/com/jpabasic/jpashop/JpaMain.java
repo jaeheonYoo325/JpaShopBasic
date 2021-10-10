@@ -12,9 +12,11 @@ import org.hibernate.Hibernate;
 
 import com.jpabasic.jpashop.domain.Book;
 import com.jpabasic.jpashop.domain.Member;
+import com.jpabasic.jpashop.domain2.Child;
 import com.jpabasic.jpashop.domain2.Item2;
 import com.jpabasic.jpashop.domain2.Member2;
 import com.jpabasic.jpashop.domain2.Movie2;
+import com.jpabasic.jpashop.domain2.Parent;
 import com.jpabasic.jpashop.domain2.Team;
 
 public class JpaMain {
@@ -29,30 +31,23 @@ public class JpaMain {
 		
 		try {
 			
-			Team team = new Team();
-			team.setName("teamA");
-			em.persist(team);
+			Child child1 = new Child();
+			Child child2 = new Child();
 			
-			Team teamB = new Team();
-			teamB.setName("teamB");
-			em.persist(teamB);
+			Parent parent = new Parent();
+			parent.addChild(child1);
+			parent.addChild(child2);
 			
-			Member2 member1 = new Member2();
-			member1.setUsername("member1");
-			member1.setTeam(team);
-			em.persist(member1);
-			
-			Member2 member2 = new Member2();
-			member2.setUsername("member2");
-			member2.setTeam(teamB);
-			em.persist(member2);
+			em.persist(parent);
+//			em.persist(child1);
+//			em.persist(child2);
 			
 			em.flush();
 			em.clear();
 			
-//			Member2 m = em.find(Member2.class, member1.getId());
-			List<Member2> members = em.createQuery("select m from Member2 m join fetch m.team", Member2.class)
-					.getResultList();
+			Parent findParent = em.find(Parent.class, parent.getId());
+			findParent.getChildList().remove(0);
+//			em.remove(findParent);
 			
 			tx.commit();
 		} catch (Exception e) {
