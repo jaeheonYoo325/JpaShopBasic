@@ -31,23 +31,11 @@ public class JpaMain {
 		
 		try {
 			
-			Child child1 = new Child();
-			Child child2 = new Child();
+			Book book = new Book();
+			book.setName("JPA");
+			book.setAuthor("김영한");
 			
-			Parent parent = new Parent();
-			parent.addChild(child1);
-			parent.addChild(child2);
-			
-			em.persist(parent);
-//			em.persist(child1);
-//			em.persist(child2);
-			
-			em.flush();
-			em.clear();
-			
-			Parent findParent = em.find(Parent.class, parent.getId());
-			findParent.getChildList().remove(0);
-//			em.remove(findParent);
+			em.persist(book);
 			
 			tx.commit();
 		} catch (Exception e) {
