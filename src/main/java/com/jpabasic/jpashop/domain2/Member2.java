@@ -39,17 +39,17 @@ public class Member2 extends BaseEntity2 {
 	@Embedded
 	private Address homeAddress;
 	
-	// 주소
-	@Embedded
-	@AttributeOverrides({
-        @AttributeOverride(name="city", 
-        		column=@Column(name = "WORK_CITY")),
-        @AttributeOverride(name="street", 
-        		column=@Column(name = "WORK_STREET")),
-        @AttributeOverride(name="zipcode", 
-        		column=@Column(name = "WORK_ZIPCODE"))
-	})
-	private Address workAddress;
+//	// 주소
+//	@Embedded
+//	@AttributeOverrides({
+//        @AttributeOverride(name="city", 
+//        		column=@Column(name = "WORK_CITY")),
+//        @AttributeOverride(name="street", 
+//        		column=@Column(name = "WORK_STREET")),
+//        @AttributeOverride(name="zipcode", 
+//        		column=@Column(name = "WORK_ZIPCODE"))
+//	})
+//	private Address workAddress;
 
 	public Long getId() {
 		return id;

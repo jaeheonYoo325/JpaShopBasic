@@ -33,12 +33,15 @@ public class JpaMain {
 		
 		try {
 			
+			Address address = new Address("city","street","10000");
+			
 			Member2 member = new Member2();
 			member.setUsername("hello");
-			member.setHomeAddress(new Address("city","street","10000"));
-			member.setWorkPeriod(new Period());
-			
+			member.setHomeAddress(address);
 			em.persist(member);
+
+			Address newAddress = new Address("NewCity", address.getStreet(), address.getZipcode());
+			member.setHomeAddress(newAddress);
 			
 			tx.commit();
 		} catch (Exception e) {
