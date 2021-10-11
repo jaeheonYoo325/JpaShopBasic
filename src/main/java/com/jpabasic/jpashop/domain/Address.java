@@ -1,26 +1,26 @@
-package com.jpabasic.jpashop.domain2;
+package com.jpabasic.jpashop.domain;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+
+import com.jpabasic.jpashop.domain2.Address2;
 
 @Embeddable
 public class Address {
-
-	// 주소
+	
+	@Column(length = 10)
 	private String city;
+	@Column(length = 20)
 	private String street;
+	@Column(length = 5)
 	private String zipcode;
 
-	public Address() {
+	public String fullAddress() {
+		return getCity() + " " + getStreet() + " " + getZipcode();
 	}
-
-	public Address(String city, String street, String zipcode) {
-		this.city = city;
-		this.street = street;
-		this.zipcode = zipcode;
-	}
-
+	
 	public String getCity() {
 		return city;
 	}
@@ -59,5 +59,4 @@ public class Address {
 	public int hashCode() {
 		return Objects.hash(city, street, zipcode);
 	}
-
 }

@@ -13,8 +13,8 @@ import org.hibernate.Hibernate;
 
 import com.jpabasic.jpashop.domain.Book;
 import com.jpabasic.jpashop.domain.Member;
-import com.jpabasic.jpashop.domain2.Address;
-import com.jpabasic.jpashop.domain2.AddressEntity;
+import com.jpabasic.jpashop.domain2.Address2;
+import com.jpabasic.jpashop.domain2.AddressEntity2;
 import com.jpabasic.jpashop.domain2.Child;
 import com.jpabasic.jpashop.domain2.Item2;
 import com.jpabasic.jpashop.domain2.Member2;
@@ -37,14 +37,14 @@ public class JpaMain {
 			
 			Member2 member = new Member2();
 			member.setUsername("member1");
-			member.setHomeAddress(new Address("homeCity", "street", "10000"));
+			member.setHomeAddress(new Address2("homeCity", "street", "10000"));
 			
 			member.getFavoriteFoods().add("치킨");
 			member.getFavoriteFoods().add("족발");
 			member.getFavoriteFoods().add("피자");
 			
-			member.getAddressHistory().add(new AddressEntity("old1", "street", "10000"));
-			member.getAddressHistory().add(new AddressEntity("old2", "street", "10000"));
+			member.getAddressHistory().add(new AddressEntity2("old1", "street", "10000"));
+			member.getAddressHistory().add(new AddressEntity2("old2", "street", "10000"));
 			
 			em.persist(member);
 			
@@ -55,8 +55,8 @@ public class JpaMain {
 			Member2 findMember = em.find(Member2.class, member.getId());
 			
 			//homeCity -> newCity
-			Address a = findMember.getHomeAddress();
-			findMember.setHomeAddress(new Address("newCity", a.getStreet(), a.getZipcode()));
+			Address2 a = findMember.getHomeAddress();
+			findMember.setHomeAddress(new Address2("newCity", a.getStreet(), a.getZipcode()));
 			
 			//치킨 -> 한식
 			findMember.getFavoriteFoods().remove("치킨");

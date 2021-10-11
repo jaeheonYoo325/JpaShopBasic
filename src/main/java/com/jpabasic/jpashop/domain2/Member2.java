@@ -45,7 +45,7 @@ public class Member2 extends BaseEntity2 {
 
 	// 주소
 	@Embedded
-	private Address homeAddress;
+	private Address2 homeAddress;
 
 	@ElementCollection
 	@CollectionTable(name = "FAVORITE_FOOD", joinColumns = @JoinColumn(name = "MEMBER_ID"))
@@ -54,7 +54,7 @@ public class Member2 extends BaseEntity2 {
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "MEMBER_ID")
-	private List<AddressEntity> addressHistory = new ArrayList<>();
+	private List<AddressEntity2> addressHistory = new ArrayList<>();
 	
 //	@ElementCollection
 //	@CollectionTable(name = "ADDRESS", joinColumns = @JoinColumn(name = "MEMBER_ID"))
@@ -105,11 +105,11 @@ public class Member2 extends BaseEntity2 {
 		this.workPeriod = workPeriod;
 	}
 
-	public Address getHomeAddress() {
+	public Address2 getHomeAddress() {
 		return homeAddress;
 	}
 
-	public void setHomeAddress(Address homeAddress) {
+	public void setHomeAddress(Address2 homeAddress) {
 		this.homeAddress = homeAddress;
 	}
 
@@ -121,11 +121,11 @@ public class Member2 extends BaseEntity2 {
 		this.favoriteFoods = favoriteFoods;
 	}
 
-	public List<AddressEntity> getAddressHistory() {
+	public List<AddressEntity2> getAddressHistory() {
 		return addressHistory;
 	}
 
-	public void setAddressHistory(List<AddressEntity> addressHistory) {
+	public void setAddressHistory(List<AddressEntity2> addressHistory) {
 		this.addressHistory = addressHistory;
 	}
 

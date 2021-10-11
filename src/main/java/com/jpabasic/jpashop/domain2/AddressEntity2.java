@@ -7,18 +7,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ADDRESS")
-public class AddressEntity {
+public class AddressEntity2 {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	private Address address;
+	private Address2 address;
 
-	public AddressEntity() {}
+	public AddressEntity2() {}
 	
-	public AddressEntity(String city, String street, String zipcode) {
-		this.address = new Address(city, street, zipcode);
+	public AddressEntity2(String city, String street, String zipcode) {
+		this.address = new Address2(city, street, zipcode);
 	}
 
 	public Long getId() {
@@ -29,11 +29,11 @@ public class AddressEntity {
 		this.id = id;
 	}
 
-	public Address getAddress() {
+	public Address2 getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(Address2 address) {
 		this.address = address;
 	}
 
