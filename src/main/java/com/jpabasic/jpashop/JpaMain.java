@@ -12,11 +12,13 @@ import org.hibernate.Hibernate;
 
 import com.jpabasic.jpashop.domain.Book;
 import com.jpabasic.jpashop.domain.Member;
+import com.jpabasic.jpashop.domain2.Address;
 import com.jpabasic.jpashop.domain2.Child;
 import com.jpabasic.jpashop.domain2.Item2;
 import com.jpabasic.jpashop.domain2.Member2;
 import com.jpabasic.jpashop.domain2.Movie2;
 import com.jpabasic.jpashop.domain2.Parent;
+import com.jpabasic.jpashop.domain2.Period;
 import com.jpabasic.jpashop.domain2.Team;
 
 public class JpaMain {
@@ -31,11 +33,12 @@ public class JpaMain {
 		
 		try {
 			
-			Book book = new Book();
-			book.setName("JPA");
-			book.setAuthor("김영한");
+			Member2 member = new Member2();
+			member.setUsername("hello");
+			member.setHomeAddress(new Address("city","street","10000"));
+			member.setWorkPeriod(new Period());
 			
-			em.persist(book);
+			em.persist(member);
 			
 			tx.commit();
 		} catch (Exception e) {
